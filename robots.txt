@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /obrigado
+Disallow: /404
+
+Sitemap: https://carrochefe.com.br/sitemap.xml
