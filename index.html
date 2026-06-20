@@ -381,6 +381,41 @@ nav a.active::after {
 .field:focus { border-color: var(--copper); }
 .form-actions { margin-top: 24px; }
 
+/* ── FAQ ────────────────────────────────────────────────────── */
+.faq-inner { max-width: 760px; margin-top: 48px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-q {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 0;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: .02em;
+  transition: color .2s;
+  user-select: none;
+}
+.faq-q:hover, .faq-q.open { color: var(--copper); }
+.faq-ico { width: 18px; height: 18px; flex-shrink: 0; position: relative; opacity: .45; transition: opacity .2s; }
+.faq-ico::before, .faq-ico::after { content: ''; position: absolute; background: currentColor; transition: transform .3s; }
+.faq-ico::before { width: 12px; height: 1px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.faq-ico::after { width: 1px; height: 12px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.faq-q.open .faq-ico { opacity: 1; }
+.faq-q.open .faq-ico::after { transform: translate(-50%,-50%) rotate(90deg); opacity: 0; }
+.faq-a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text-m);
+  line-height: 1.9;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, padding .4s ease;
+}
+.faq-a.open { max-height: 240px; padding-bottom: 22px; }
+
 /* ── FOOTER ─────────────────────────────────────────────────── */
 #footer {
   padding: 68px 80px 48px;
@@ -494,6 +529,9 @@ nav a.active::after {
   .budget-content { max-width: 100%; }
   .form-grid { grid-template-columns: 1fr; }
   .deco-diamond { display: none; }
+
+  /* FAQ */
+  .faq-q { font-size: 13px; }
 
   /* Footer */
   #footer { padding: 52px 24px 36px; }
@@ -906,6 +944,7 @@ nav a.active::after {
     <a href="#eventos"  data-sec="eventos">Eventos</a>
     <a href="#espaco"   data-sec="espaco">O Espaço</a>
     <a href="#galeria"  data-sec="galeria">Galeria</a>
+    <a href="#faq"      data-sec="faq">FAQ</a>
     <a href="#contato"  data-sec="contato">Contato</a>
   </nav>
 
@@ -1172,6 +1211,39 @@ nav a.active::after {
         SOLICITAR ORÇAMENTO
         <span class="arrow">→</span>
       </button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FAQ ═════════════════════════════════════════════════════ -->
+<section id="faq" class="sec-pad" style="background: var(--bg)">
+  <div class="eyebrow">
+    <svg class="gem" width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg>
+    <span class="eyebrow-txt">DÚVIDAS FREQUENTES</span>
+  </div>
+  <h2 class="hd">Perguntas objetivas,<br>respostas diretas.</h2>
+
+  <div class="faq-inner">
+    <div class="faq-item">
+      <div class="faq-q" tabindex="0">Qual a capacidade máxima do espaço?<span class="faq-ico"></span></div>
+      <div class="faq-a">Até 150 convidados, com a mesma qualidade de estrutura e atendimento do íntimo ao grandioso.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" tabindex="0">Quais tipos de evento o Carro Chefe recebe?<span class="faq-ico"></span></div>
+      <div class="faq-a">Casamentos, aniversários, debutantes, eventos corporativos, shows e workshops — o espaço se adapta ao formato e à identidade de cada celebração.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" tabindex="0">Posso trazer meu próprio buffet e fornecedores?<span class="faq-ico"></span></div>
+      <div class="faq-a">Sim. Você tem total liberdade para trazer seus fornecedores de confiança — nossa equipe coordena a logística de acesso e montagem.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" tabindex="0">O estacionamento é gratuito?<span class="faq-ico"></span></div>
+      <div class="faq-a">Sim. Estacionamento gratuito e com segurança para todos os convidados, sem custo adicional.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" tabindex="0">Como funciona a reserva da data?<span class="faq-ico"></span></div>
+      <div class="faq-a">Após o primeiro contato, agendamos uma visita sem compromisso. Com a data e o escopo alinhados, formalizamos o contrato e um consultor acompanha você até o grande dia.</div>
     </div>
   </div>
 </section>
@@ -1522,7 +1594,7 @@ nav a.active::after {
 (function () {
   const hdr      = document.getElementById('header');
   const navLinks = document.querySelectorAll('#nav a');
-  const sections = ['home','eventos','espaco','galeria','orcamento','contato'];
+  const sections = ['home','eventos','espaco','galeria','orcamento','faq','contato'];
 
   // ── Scroll: header + active nav ──────────────────────────────
   function onScroll () {
@@ -1554,6 +1626,28 @@ nav a.active::after {
   document.querySelectorAll('.field').forEach(function (f) {
     f.addEventListener('focus', function () { this.style.borderColor = '#C06830'; });
     f.addEventListener('blur',  function () { this.style.borderColor = '#201A14'; });
+  });
+
+  // ── FAQ accordion ─────────────────────────────────────────────
+  document.querySelectorAll('.faq-q').forEach(function (q) {
+    q.addEventListener('click', function () {
+      var a      = this.nextElementSibling;
+      var isOpen = this.classList.contains('open');
+      document.querySelectorAll('.faq-q').forEach(function (x) {
+        x.classList.remove('open');
+        x.nextElementSibling.classList.remove('open');
+      });
+      if (!isOpen) {
+        this.classList.add('open');
+        a.classList.add('open');
+      }
+    });
+    q.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
   });
 
 })();
