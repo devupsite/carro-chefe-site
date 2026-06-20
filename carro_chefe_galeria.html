@@ -69,6 +69,18 @@ a{text-decoration:none;color:inherit}
   .g-grid{grid-template-columns:1fr}
   .g-item.span2{grid-column:span 1}
 }
+
+/* ── LIGHTBOX ───────────────────────────────────────────── */
+#lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:9999;align-items:center;justify-content:center;flex-direction:column}
+#lb.open{display:flex}
+#lb-img{width:90vw;height:82vh;background-size:contain;background-repeat:no-repeat;background-position:center;transition:background-image .15s ease}
+#lb-caption{margin-top:14px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+#lb-close{position:fixed;top:18px;right:22px;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;opacity:.65;transition:opacity .2s;line-height:1;padding:6px}
+#lb-close:hover{opacity:1}
+#lb-prev,#lb-next{position:fixed;top:50%;transform:translateY(-50%);background:none;border:none;color:#fff;font-size:52px;cursor:pointer;opacity:.45;transition:opacity .2s;padding:0 18px;line-height:1}
+#lb-prev{left:0}#lb-next{right:0}
+#lb-prev:hover,#lb-next:hover{opacity:.95}
+@media(max-width:600px){#lb-img{width:98vw;height:70vh}#lb-prev,#lb-next{font-size:36px;padding:0 8px}}
 </style>
 </head>
 <body>
@@ -419,18 +431,96 @@ a{text-decoration:none;color:inherit}
   <svg width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#3C3630" stroke-width="1.15" stroke-linejoin="round"/></svg>
   <span class="foot-copy">SÃO PAULO — SP</span>
 </footer>
+<!-- Lightbox -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Visualizador de imagens">
+  <button id="lb-close" aria-label="Fechar">✕</button>
+  <button id="lb-prev" aria-label="Anterior">‹</button>
+  <button id="lb-next" aria-label="Próxima">›</button>
+  <div id="lb-img"></div>
+  <div id="lb-caption"></div>
+</div>
+
 <script>(function() {
-  var btns = document.querySelectorAll('.filter-btn');
-  var items = document.querySelectorAll('.g-item');
+  /* ── FILTRO ── */
+  var btns  = document.querySelectorAll('.filter-btn');
+  var gItems = document.querySelectorAll('.g-item');
   btns.forEach(function(btn) {
     btn.addEventListener('click', function() {
       var f = this.dataset.filter;
       btns.forEach(function(b) { b.classList.remove('active'); });
       this.classList.add('active');
-      items.forEach(function(item) {
+      gItems.forEach(function(item) {
         item.style.display = (f === 'all' || item.dataset.cat === f) ? '' : 'none';
       });
     });
+  });
+
+  /* ── LIGHTBOX ── */
+  var lb         = document.getElementById('lb');
+  var lbImg      = document.getElementById('lb-img');
+  var lbCaption  = document.getElementById('lb-caption');
+  var lbClose    = document.getElementById('lb-close');
+  var lbPrev     = document.getElementById('lb-prev');
+  var lbNext     = document.getElementById('lb-next');
+  var visItems   = [];
+  var current    = 0;
+
+  function getVisible() {
+    return Array.from(gItems).filter(function(item) {
+      var inner = item.querySelector('.g-item-inner');
+      return inner && inner.style.backgroundImage && item.style.display !== 'none';
+    });
+  }
+
+  function show(idx) {
+    var item  = visItems[idx];
+    var inner = item.querySelector('.g-item-inner');
+    var lbl   = item.querySelector('.g-item-lbl');
+    lbImg.style.backgroundImage = inner.style.backgroundImage;
+    lbCaption.textContent = lbl ? lbl.textContent : '';
+    lbPrev.style.visibility = visItems.length > 1 ? 'visible' : 'hidden';
+    lbNext.style.visibility = visItems.length > 1 ? 'visible' : 'hidden';
+  }
+
+  function open(idx) {
+    visItems = getVisible();
+    current  = idx;
+    show(current);
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function prev() { current = (current - 1 + visItems.length) % visItems.length; show(current); }
+  function next() { current = (current + 1) % visItems.length; show(current); }
+
+  /* clique em cada card */
+  gItems.forEach(function(item) {
+    var inner = item.querySelector('.g-item-inner');
+    if (inner && inner.style.backgroundImage) {
+      item.style.cursor = 'zoom-in';
+      item.addEventListener('click', function() {
+        var vis = getVisible();
+        var i   = vis.indexOf(item);
+        if (i >= 0) open(i);
+      });
+    }
+  });
+
+  lbClose.addEventListener('click', close);
+  lb.addEventListener('click', function(e) { if (e.target === lb) close(); });
+  lbPrev.addEventListener('click', function(e) { e.stopPropagation(); prev(); });
+  lbNext.addEventListener('click', function(e) { e.stopPropagation(); next(); });
+
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')     close();
+    if (e.key === 'ArrowLeft')  prev();
+    if (e.key === 'ArrowRight') next();
   });
 }());</script>
 </body></html>
