@@ -190,13 +190,19 @@ img{display:block;max-width:100%}
 }
 .razoes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 
-/* REAL WEDDING STRIP */
+/* REAL WEDDING / ÁLBUNS */
 #real-wedding{padding:88px 80px;background:var(--bg)}
-.rw-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:340px;gap:6px;margin-top:48px}
-.rw-img{background-size:cover;background-position:center;position:relative;overflow:hidden}
-.rw-img::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,10,7,.55) 0%,transparent 45%)}
-.rw-tag{position:absolute;bottom:16px;left:18px;z-index:1;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#EDE8DC}
-.rw-stack{display:grid;grid-template-rows:1fr 1fr;gap:6px}
+.album { margin-top: 56px; }
+.album-meta { display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.album-couple { font-family:'Syne',sans-serif; font-size:18px; font-weight:700; color:#C06830; letter-spacing:.04em; }
+.album-div { color: rgba(255,255,255,.25); font-size:14px; }
+.album-date { font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:rgba(255,255,255,.45); }
+.album-grid { display:grid; gap:6px; }
+.ag-6 { grid-template-columns:1fr 1fr 1fr; grid-template-rows:220px 220px; }
+.ag-4 { grid-template-columns:1fr 1fr 1fr; grid-template-rows:220px 220px; }
+.ag-img { background-size:cover; background-position:center; border-radius:4px; overflow:hidden; transition:transform .4s ease; cursor:zoom-in; }
+.ag-img:hover { transform:scale(1.02); }
+.ag-tall { grid-row:span 2; }
 .razao{padding:40px 32px;border:1px solid var(--bd);transition:border-color .3s}
 .razao:hover{border-color:var(--cu-d)}
 .razao-num{
@@ -301,9 +307,10 @@ img{display:block;max-width:100%}
   /* Sections */
   #razoes,#deps,#faq,#cta,#real-wedding{padding:60px 24px}
 
-  /* Real Wedding Grid */
-  .rw-grid{grid-template-columns:1fr 1fr;grid-template-rows:200px;gap:5px}
-  .rw-stack{grid-template-rows:1fr 1fr}
+  /* Album Grid responsive */
+  .ag-6,.ag-4{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .ag-img{height:160px}
+  .ag-tall{grid-row:span 1}
 
   /* Grids */
   .razoes-grid{grid-template-columns:1fr}
@@ -479,22 +486,43 @@ img{display:block;max-width:100%}
 
 <!-- CASAMENTO REAL: prova fotográfica do espaço em uso -->
 <section id="real-wedding">
-  <div class="section-label"><svg width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg> CASAMENTO REAL</div>
-  <h2 class="section-h2">Sandra & Didier,<br>maio de 2026.</h2>
-  <div class="rw-grid">
-    <div class="rw-img" style="background-image:url('images/casal-noiva-arco.jpg');background-position:center top">
-      <span class="rw-tag">A cerimônia</span>
+  <div class="section-label"><svg width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg> CASAMENTOS REAIS</div>
+  <h2 class="section-h2">Momentos reais,<br>celebrados aqui.</h2>
+
+  <!-- Álbum 1 — G & Y -->
+  <div class="album">
+    <div class="album-meta"><span class="album-couple">G &amp; Y</span><span class="album-div">—</span><span class="album-date">Abril de 2026</span></div>
+    <div class="album-grid ag-6">
+      <div class="ag-img ag-tall" style="background-image:url('images/noiva-retrato-tiara.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/saida-casal-confete.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/casal-bolo-verde.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/noivo-aguarda-noiva.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/aliancas-personalizadas.jpg');background-position:center"></div>
+      <div class="ag-img" style="background-image:url('images/casal-retrato-formal.jpg');background-position:center top"></div>
     </div>
-    <div class="rw-img" style="background-image:url('images/venue-salao-festa.jpg')">
-      <span class="rw-tag">A recepção</span>
+  </div>
+
+  <!-- Álbum 2 — Casamento azul -->
+  <div class="album">
+    <div class="album-meta"><span class="album-couple">Casamento Azul</span><span class="album-div">—</span><span class="album-date">2025</span></div>
+    <div class="album-grid ag-6">
+      <div class="ag-img ag-tall" style="background-image:url('images/cerimonia-passadeira-verde.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/casal-olhares.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/corte-bolo-casal.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/noiva-madrinhas.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/mesa-bolo-arco-azul.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/padrinhos-homens.jpg');background-position:center top"></div>
     </div>
-    <div class="rw-stack">
-      <div class="rw-img" style="background-image:url('images/casal-abraco.jpg');background-position:center 15%">
-        <span class="rw-tag">O momento</span>
-      </div>
-      <div class="rw-img" style="background-image:url('images/detalhe-bolo.jpg')">
-        <span class="rw-tag">Os detalhes</span>
-      </div>
+  </div>
+
+  <!-- Álbum 3 — Casamento branco -->
+  <div class="album">
+    <div class="album-meta"><span class="album-couple">Casamento Branco</span><span class="album-div">—</span><span class="album-date">2024</span></div>
+    <div class="album-grid ag-4">
+      <div class="ag-img ag-tall" style="background-image:url('images/casal-escada-verde.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/mesa-bolo-arco-branco.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/cerimonia-noivos-altar.jpg');background-position:center top"></div>
+      <div class="ag-img" style="background-image:url('images/mesa-doces-flores-rosa.jpg');background-position:center top"></div>
     </div>
   </div>
 </section>
