@@ -558,6 +558,122 @@ nav a.active::after {
   .lgpd-accept, .lgpd-decline { flex: 1; text-align: center; }
 }
 
+/* ── HAMBÚRGUER ─────────────────────────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5.5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+  z-index: 200;
+}
+.hamburger span {
+  display: block;
+  height: 1.5px;
+  background: var(--text);
+  transform-origin: center;
+  transition: transform .38s cubic-bezier(.4,0,.2,1),
+              opacity  .28s ease,
+              width    .28s ease;
+}
+.hamburger span:nth-child(1) { width: 24px; }
+.hamburger span:nth-child(2) { width: 16px; }
+.hamburger span:nth-child(3) { width: 24px; }
+.hamburger.open span:nth-child(1) { width:24px; transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3) { width:24px; transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU OVERLAY ─────────────────────────────────────────────────── */
+#mob-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 140;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(12,10,7,.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .38s ease, visibility .38s ease;
+  pointer-events: none;
+}
+#mob-menu.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.mob-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 0 32px;
+}
+.mob-nav a {
+  display: block;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(32px, 10vw, 52px);
+  color: var(--text);
+  padding: 8px 0;
+  letter-spacing: -.02em;
+  line-height: 1.1;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: color .2s,
+              opacity  .4s ease,
+              transform .4s cubic-bezier(.2,.8,.4,1);
+}
+#mob-menu.open .mob-nav a:nth-child(1) { opacity:1; transform:none; transition-delay:.06s; }
+#mob-menu.open .mob-nav a:nth-child(2) { opacity:1; transform:none; transition-delay:.11s; }
+#mob-menu.open .mob-nav a:nth-child(3) { opacity:1; transform:none; transition-delay:.16s; }
+#mob-menu.open .mob-nav a:nth-child(4) { opacity:1; transform:none; transition-delay:.21s; }
+#mob-menu.open .mob-nav a:nth-child(5) { opacity:1; transform:none; transition-delay:.26s; }
+.mob-nav a:hover,
+.mob-nav a.active  { color: var(--copper); }
+.mob-rule {
+  width: 36px; height: 1px;
+  background: var(--border);
+  margin: 28px auto 24px;
+  opacity: 0;
+  transition: opacity .4s ease .28s;
+}
+#mob-menu.open .mob-rule { opacity: 1; }
+.mob-cta-wrap {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .4s ease .32s, transform .4s ease .32s;
+}
+#mob-menu.open .mob-cta-wrap { opacity:1; transform:none; }
+.mob-phone {
+  margin-top: 20px;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--text-m);
+  opacity: 0;
+  transition: opacity .4s ease .38s;
+}
+#mob-menu.open .mob-phone { opacity: 1; }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  #header > .btn-out { display: none; }
+}
+
 </style>
 
   <!-- ══ ANALYTICS & PIXEL ══════════════════════════════════
@@ -614,6 +730,10 @@ nav a.active::after {
   </nav>
 
   <a href="#orcamento" class="btn-out">RESERVE AGORA</a>
+  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
 </header>
 
 
@@ -1414,6 +1534,67 @@ nav a.active::after {
   }, {passive:true});
   btn.addEventListener('click', function(){
     window.scrollTo({top:0, behavior:'smooth'});
+  });
+}());
+</script>
+
+<!-- ═══ MENU MOBILE ════════════════════════════════════════════════════════ -->
+<div id="mob-menu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+  <nav class="mob-nav">
+    <a href="#home"     data-sec="home">Home</a>
+    <a href="#eventos"  data-sec="eventos">Eventos</a>
+    <a href="#espaco"   data-sec="espaco">O Espaço</a>
+    <a href="#galeria"  data-sec="galeria">Galeria</a>
+    <a href="#contato"  data-sec="contato">Contato</a>
+  </nav>
+  <div class="mob-rule"></div>
+  <div class="mob-cta-wrap">
+    <a href="#orcamento" class="btn-fill">RESERVE AGORA <span class="arrow">→</span></a>
+  </div>
+  <p class="mob-phone">(11) 96297-9609</p>
+</div>
+
+<script>
+/* ── HAMBURGER / MENU MOBILE ────────────────────────────────────────────── */
+(function () {
+  var ham = document.getElementById('hamburger');
+  var mob = document.getElementById('mob-menu');
+  if (!ham || !mob) return;
+
+  function openMenu() {
+    ham.classList.add('open');
+    mob.classList.add('open');
+    ham.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+
+    /* Sync active state com o estado atual da página */
+    var active = document.querySelector('#nav a.active');
+    if (active) {
+      mob.querySelectorAll('a').forEach(function(a) {
+        a.classList.toggle('active', a.dataset.sec === active.dataset.sec);
+      });
+    }
+  }
+
+  function closeMenu() {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    ham.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  ham.addEventListener('click', function () {
+    mob.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  /* Fechar ao clicar em link */
+  mob.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', closeMenu);
+  });
+
+  /* Fechar com tecla ESC */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
   });
 }());
 </script>
