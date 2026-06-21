@@ -1680,5 +1680,39 @@ nav a.active::after {
 
 }());
 </script>
+
+<!-- ── BOTÃO WHATSAPP FLUTUANTE ── -->
+<a id="wa-float" href="https://wa.me/5511962979609?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20no%20Carro%20Chefe." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="white" width="28" height="28"><path d="M16 .8C7.6.8.8 7.6.8 16c0 2.7.7 5.2 1.9 7.4L.8 31.2l8-2c2.1 1.1 4.5 1.7 7 1.7C24.4 30.9 31.2 24.1 31.2 16 31.2 7.6 24.4.8 16 .8zm0 27.5c-2.4 0-4.6-.6-6.6-1.8l-.5-.3-4.7 1.2 1.3-4.6-.3-.5C4 20.6 3.4 18.4 3.4 16 3.4 9.1 9.1 3.4 16 3.4S28.6 9.1 28.6 16 22.9 28.3 16 28.3zm7.1-9.2c-.4-.2-2.3-1.1-2.6-1.2-.4-.1-.6-.2-.9.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.2-.8 0-.4-.2-1.6-.6-3-1.8-1.1-1-1.8-2.2-2.1-2.6-.2-.4 0-.6.2-.8l.6-.7c.2-.2.2-.4.4-.7.1-.2 0-.5-.1-.7-.2-.2-.9-2.1-1.2-2.9-.3-.7-.6-.6-.8-.6h-.7c-.3 0-.7.1-1 .5-.4.4-1.3 1.3-1.3 3.1s1.3 3.6 1.5 3.8c.2.2 2.6 4 6.4 5.6 3.8 1.5 3.8 1 4.5 1 .7 0 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.1-.3-.2-.7-.4z"/></svg>
+</a>
+
+<!-- ── BOTÃO VOLTAR AO TOPO ── -->
+<button id="back-top" aria-label="Voltar ao topo">
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<style>
+#wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45);z-index:8000;transition:transform .2s,box-shadow .2s;text-decoration:none}
+#wa-float:hover{transform:scale(1.1);box-shadow:0 6px 22px rgba(37,211,102,.6)}
+#wa-float::before{content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;animation:wa-pulse 2s ease-out infinite;z-index:-1}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+
+#back-top{position:fixed;bottom:90px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(192,104,48,.88);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.25);z-index:8000;opacity:0;visibility:hidden;transition:opacity .3s,transform .2s,visibility .3s}
+#back-top.visible{opacity:1;visibility:visible}
+#back-top:hover{transform:translateY(-3px)}
+</style>
+
+<script>
+(function(){
+  var btn = document.getElementById('back-top');
+  window.addEventListener('scroll', function(){
+    btn.classList.toggle('visible', window.scrollY > 300);
+  }, {passive:true});
+  btn.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+}());
+</script>
+
 </body>
 </html>
