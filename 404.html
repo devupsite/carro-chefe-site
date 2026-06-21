@@ -83,6 +83,10 @@ a{text-decoration:none;color:inherit}
 <style>
 @keyframes wa-pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
 
+#wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45);z-index:8000;transition:transform .2s,box-shadow .2s;text-decoration:none}
+#wa-float:hover{transform:scale(1.1);box-shadow:0 6px 22px rgba(37,211,102,.6)}
+#wa-float::before{content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;animation:wa-pulse 2s ease-out infinite;z-index:-1}
+
 #back-top{position:fixed;bottom:90px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(192,104,48,.88);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.25);z-index:8000;opacity:0;visibility:hidden;transition:opacity .3s,transform .2s,visibility .3s}
 #back-top.visible{opacity:1;visibility:visible}
 #back-top:hover{transform:translateY(-3px)}
