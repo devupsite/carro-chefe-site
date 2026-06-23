@@ -353,9 +353,14 @@ nav a.active::after {
 }
 .gallery-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 340px 280px;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-auto-rows: 230px;
   gap: 9px;
+}
+.gallery-grid .g-hero { grid-row: span 2; }
+@media(max-width:640px){
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+  .gallery-grid .g-hero { grid-row: span 1; }
 }
 
 /* ── BUDGET ─────────────────────────────────────────────────── */
@@ -866,9 +871,13 @@ nav a.active::after {
   </div>
 
   <div class="gallery-grid">
+    <div class="pi g-hero" style="background-image:url('images/salao-decorado-arco.jpg');background-size:cover;background-position:center top"></div>
     <div class="pi" style="background-image:url('images/venue-salao-festa.jpg');background-size:cover;background-position:center 35%"></div>
     <div class="pi" style="background-image:url('images/area-externa-terraco.jpg');background-size:cover;background-position:center top"></div>
+    <div class="pi" style="background-image:url('images/sf-cerimonia-corredor.jpg');background-size:cover;background-position:center top"></div>
     <div class="pi" style="background-image:url('images/salao-mesas-cadeiras.jpg');background-size:cover;background-position:center 40%"></div>
+    <div class="pi" style="background-image:url('images/venue-recepcao.jpg');background-size:cover;background-position:center"></div>
+    <div class="pi" style="background-image:url('images/buffet-carnes-grelhados.jpg');background-size:cover;background-position:center"></div>
     <div class="pi" style="background-image:url('images/salao-vazio-frente.jpg');background-size:cover;background-position:center"></div>
   </div>
 
