@@ -764,5 +764,21 @@ img{display:block;max-width:100%}
   document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(current-1); if(e.key==='ArrowRight') show(current+1); });
 }());
 </script>
+<div id="lgpd-banner" role="dialog" aria-label="Preferências de cookies">
+  <p class="lgpd-text">Utilizamos cookies essenciais e de análise para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="carro_chefe_politica_privacidade.html">Política de Privacidade</a> conforme a LGPD.</p>
+  <div class="lgpd-actions">
+    <button class="lgpd-decline" id="lgpd-decline">Apenas essenciais</button>
+    <button class="lgpd-accept" id="lgpd-accept">Aceitar e continuar</button>
+  </div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('lgpd-banner');
+  if(!b)return;
+  if(!localStorage.getItem('cc_consent')){setTimeout(function(){b.classList.add('visible');},1200);}
+  document.getElementById('lgpd-accept').addEventListener('click',function(){localStorage.setItem('cc_consent','accepted');b.classList.remove('visible');});
+  document.getElementById('lgpd-decline').addEventListener('click',function(){localStorage.setItem('cc_consent','declined');b.classList.remove('visible');});
+}());
+</script>
 </body>
 </html>

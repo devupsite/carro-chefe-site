@@ -42,6 +42,16 @@ a{text-decoration:none;color:inherit}
 .obg-num{font-family:'Playfair Display',serif;font-size:24px;color:var(--cu);opacity:.3;line-height:1;margin-bottom:10px}
 .obg-txt{font-size:11px;font-weight:300;color:var(--tx-m);line-height:1.7}
 @media(max-width:768px){.obg-inner{padding:40px 24px}.obg-steps{grid-template-columns:1fr}}
+#lgpd-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(12,10,7,.97);border-top:1px solid #201A14;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;gap:32px;backdrop-filter:blur(16px);transform:translateY(100%);transition:transform .4s ease}
+#lgpd-banner.visible{transform:translateY(0)}
+.lgpd-text{font-size:12px;font-weight:300;color:rgba(237,232,220,.7);line-height:1.7;max-width:640px}
+.lgpd-text a{color:#C06830;border-bottom:1px solid rgba(192,104,48,.3)}
+.lgpd-accept{padding:10px 24px;background:#C06830;border:none;color:#fff;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.lgpd-accept:hover{background:#D27A40}
+.lgpd-decline{padding:10px 24px;background:none;border:1px solid #3C3630;color:rgba(237,232,220,.55);font-size:11px;font-weight:500;letter-spacing:.06em;cursor:pointer}
+.lgpd-decline:hover{color:#EDE8DC;border-color:#3C3630}
+.lgpd-actions{display:flex;gap:12px;flex-shrink:0}
+@media(max-width:768px){#lgpd-banner{flex-direction:column;align-items:flex-start;padding:20px 24px;gap:16px}.lgpd-actions{width:100%}.lgpd-accept,.lgpd-decline{flex:1;text-align:center}}
 </style>
 </head>
 <body>
@@ -84,6 +94,8 @@ a{text-decoration:none;color:inherit}
   <span class="foot-copy">CARRO CHEFE © 2024</span>
   <svg width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#3C3630" stroke-width="1.15" stroke-linejoin="round"/></svg>
   <span class="foot-copy">SÃO PAULO — SP</span>
+  <svg width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#3C3630" stroke-width="1.15" stroke-linejoin="round"/></svg>
+    <a href="carro_chefe_politica_privacidade.html" style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(237,232,220,.35);text-decoration:none;border-bottom:1px solid rgba(237,232,220,.12)">Política de Privacidade</a>
 </footer>
 
 <!-- ── BOTÃO WHATSAPP FLUTUANTE ── -->
@@ -120,4 +132,20 @@ a{text-decoration:none;color:inherit}
 }());
 </script>
 
+<div id="lgpd-banner" role="dialog" aria-label="Preferências de cookies">
+  <p class="lgpd-text">Utilizamos cookies essenciais e de análise para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="carro_chefe_politica_privacidade.html">Política de Privacidade</a> conforme a LGPD.</p>
+  <div class="lgpd-actions">
+    <button class="lgpd-decline" id="lgpd-decline">Apenas essenciais</button>
+    <button class="lgpd-accept" id="lgpd-accept">Aceitar e continuar</button>
+  </div>
+</div>
+<script>
+(function(){
+  var b=document.getElementById('lgpd-banner');
+  if(!b)return;
+  if(!localStorage.getItem('cc_consent')){setTimeout(function(){b.classList.add('visible');},1200);}
+  document.getElementById('lgpd-accept').addEventListener('click',function(){localStorage.setItem('cc_consent','accepted');b.classList.remove('visible');});
+  document.getElementById('lgpd-decline').addEventListener('click',function(){localStorage.setItem('cc_consent','declined');b.classList.remove('visible');});
+}());
+</script>
 </body></html>
