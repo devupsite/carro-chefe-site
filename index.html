@@ -265,6 +265,19 @@ nav a.active::after {
 }
 .ev-card { cursor: default; }
 .ev-img-wrap { overflow: hidden; aspect-ratio: 4/5; }
+/* Vertical mosaic cards */
+.ev-mosaic {
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+}
+.ev-m-tall { grid-row: span 2; background-size:cover; background-position:center; transition:transform .6s ease; }
+.ev-m-sm   { background-size:cover; background-position:center; transition:transform .6s ease; }
+.ev-card:hover .ev-m-tall,
+.ev-card:hover .ev-m-sm { transform: scale(1.05); }
 .ev-img {
   width: 100%; height: 100%;
   transition: transform .65s ease;
@@ -685,12 +698,10 @@ nav a.active::after {
 
     <!-- Casamentos -->
     <div class="ev-card">
-      <div class="ev-img-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
-        <div class="ev-img pi" style="background-size:cover;background-position:center top;aspect-ratio:auto"></div>
-        <div style="display:grid;grid-template-rows:1fr 1fr;gap:3px">
-          <div class="ev-img pi" style="background-size:cover;background-position:center top"></div>
-          <div class="ev-img pi" style="background-size:cover;background-position:center top"></div>
-        </div>
+      <div class="ev-mosaic">
+        <div class="ev-m-tall" style="background-image:url('images/sf-noiva-retrato.jpg');background-position:center top"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/casamento5-danca-intima.jpg');background-position:center top"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/sf-bolo-arco-flores.jpg');background-position:center top"></div>
       </div>
       <div class="ev-body">
         <svg class="gem" width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg>
@@ -703,8 +714,10 @@ nav a.active::after {
 
     <!-- Debutantes -->
     <div class="ev-card">
-      <div class="ev-img-wrap">
-        <div class="ev-img pi" style="background-size:cover;background-position:center top"></div>
+      <div class="ev-mosaic">
+        <div class="ev-m-tall" style="background-image:url('images/debutante-quinze-anos.jpg');background-position:center top"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/debutante-valsa-par.jpg');background-position:center top"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/debutante-decoracao-15.jpg');background-position:center top"></div>
       </div>
       <div class="ev-body">
         <svg class="gem" width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg>
@@ -717,8 +730,10 @@ nav a.active::after {
 
     <!-- Aniversários -->
     <div class="ev-card">
-      <div class="ev-img-wrap">
-        <div class="ev-img pi" style="background-size:cover;background-position:center top"></div>
+      <div class="ev-mosaic">
+        <div class="ev-m-tall" style="background-image:url('images/robot-led-rosa-aniversariante.jpg');background-position:center top"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/festa-pista-luzes-glow.jpg');background-position:center"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/aniversario-festa-bolo.jpg');background-position:center top"></div>
       </div>
       <div class="ev-body">
         <svg class="gem" width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg>
@@ -731,8 +746,10 @@ nav a.active::after {
 
     <!-- Shows -->
     <div class="ev-card">
-      <div class="ev-img-wrap">
-        <div class="ev-img pi" style="background-size:cover;background-position:center 40%"></div>
+      <div class="ev-mosaic">
+        <div class="ev-m-tall" style="background-image:url('images/show-banda-ao-vivo.jpg');background-position:center top"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/halloween-grupo-fantasias.jpg');background-position:center top"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/halloween-pista-decorada.jpg');background-position:center top"></div>
       </div>
       <div class="ev-body">
         <svg class="gem" width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg>
@@ -745,8 +762,10 @@ nav a.active::after {
 
     <!-- Corporativos -->
     <div class="ev-card">
-      <div class="ev-img-wrap">
-        <div class="ev-img pi" style="background-size:cover;background-position:center"></div>
+      <div class="ev-mosaic">
+        <div class="ev-m-tall" style="background-image:url('images/salao-mesas-cadeiras.jpg');background-position:center"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/buffet-carnes-grelhados.jpg');background-position:center"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/salao-vazio-frente.jpg');background-position:center"></div>
       </div>
       <div class="ev-body">
         <svg class="gem" width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg>
@@ -759,8 +778,10 @@ nav a.active::after {
 
     <!-- Workshops -->
     <div class="ev-card">
-      <div class="ev-img-wrap">
-        <div class="ev-img pi" style="background-size:cover;background-position:center"></div>
+      <div class="ev-mosaic">
+        <div class="ev-m-tall" style="background-image:url('images/salao-decorado-arco.jpg');background-position:center top"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/area-externa-terraco.jpg');background-position:center"></div>
+        <div class="ev-m-sm"   style="background-image:url('images/venue-recepcao.jpg');background-position:center"></div>
       </div>
       <div class="ev-body">
         <svg class="gem" width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg>
