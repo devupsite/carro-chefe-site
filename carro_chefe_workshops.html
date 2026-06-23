@@ -762,6 +762,21 @@ img{display:block;max-width:100%}
   lbPrev.addEventListener('click', function(e){ e.stopPropagation(); show(current-1); });
   lbNext.addEventListener('click', function(e){ e.stopPropagation(); show(current+1); });
   document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open')) return; if(e.key==='Escape') close(); if(e.key==='ArrowLeft') show(current-1); if(e.key==='ArrowRight') show(current+1); });
+
+  /* ── SWIPE MOBILE ── */
+  var touchStartX = 0;
+  var touchStartY = 0;
+  lb.addEventListener('touchstart', function(e){
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    var dy = e.changedTouches[0].clientY - touchStartY;
+    if(Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+    if(dx < 0) show(current+1);
+    else show(current-1);
+  }, {passive:true});
 }());
 </script>
 <div id="lgpd-banner" role="dialog" aria-label="Preferências de cookies">
