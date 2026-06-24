@@ -83,6 +83,79 @@ a{text-decoration:none;color:inherit}
 .lgpd-decline:hover{color:#EDE8DC;border-color:#3C3630}
 @media(max-width:768px){#lgpd-banner{flex-direction:column;align-items:flex-start;padding:20px 24px;gap:16px}.lgpd-actions{width:100%}.lgpd-accept,.lgpd-decline{flex:1;text-align:center}}
 
+
+/* ── HAMBURGER MOBILE ─────────────────────────────────────────── */
+#ham-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  background: none; border: none;
+  cursor: pointer; padding: 4px;
+  z-index: 1001;
+}
+#ham-btn span {
+  display: block; width: 22px; height: 1.5px;
+  background: #EDE8DC;
+  transition: transform .3s ease, opacity .3s ease;
+  transform-origin: center;
+}
+#ham-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+#ham-btn.open span:nth-child(2) { opacity: 0; }
+#ham-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+#mob-drawer {
+  position: fixed; inset: 0; z-index: 1000;
+  pointer-events: none;
+}
+#mob-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.55);
+  opacity: 0; transition: opacity .3s ease;
+}
+#mob-panel {
+  position: absolute; top: 0; right: 0;
+  width: 75vw; max-width: 300px; height: 100%;
+  background: rgba(12,10,7,.97);
+  border-left: 1px solid rgba(192,104,48,.2);
+  backdrop-filter: blur(20px);
+  transform: translateX(100%);
+  transition: transform .35s ease;
+  display: flex; flex-direction: column;
+  padding: 80px 32px 40px;
+  gap: 0;
+}
+#mob-drawer.open { pointer-events: all; }
+#mob-drawer.open #mob-overlay { opacity: 1; }
+#mob-drawer.open #mob-panel { transform: translateX(0); }
+
+#mob-panel a {
+  font-size: 13px; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(237,232,220,.65);
+  text-decoration: none;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  transition: color .2s;
+}
+#mob-panel a:hover { color: #C06830; }
+#mob-panel a.mob-cta {
+  margin-top: 28px;
+  border: 1px solid #C06830;
+  border-bottom: 1px solid #C06830;
+  color: #C06830;
+  text-align: center;
+  padding: 12px 0;
+  font-weight: 600;
+}
+@media(min-width:769px) {
+  #ham-btn { display: none !important; }
+  #mob-drawer { display: none !important; }
+}
+@media(max-width:768px) {
+  #ham-btn { display: flex; }
+}
 </style>
 
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
@@ -96,6 +169,9 @@ a{text-decoration:none;color:inherit}
     <svg width="14" height="10" viewBox="0 0 14 10" fill="none"><path d="M13 5H1M1 5l4-4M1 5l4 4" stroke="#887C70" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Voltar ao site
   </a>
+  <button id="ham-btn" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 <div class="contact-wrap">
   <div class="contact-info">
@@ -333,4 +409,31 @@ a{text-decoration:none;color:inherit}
 }());
 </script>
 
+<div id="mob-drawer">
+  <div id="mob-overlay"></div>
+  <nav id="mob-panel">
+    <a href="index.html">Home</a>
+    <a href="carro_chefe_casamentos.html">Casamentos</a>
+    <a href="carro_chefe_debutantes.html">Debutantes</a>
+    <a href="carro_chefe_aniversarios.html">Aniversários</a>
+    <a href="carro_chefe_shows.html">Shows</a>
+    <a href="carro_chefe_eventos_corporativos.html">Corporativo</a>
+    <a href="carro_chefe_workshops.html">Workshops</a>
+    <a href="#form" class="mob-cta">Solicitar Orçamento</a>
+  </nav>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('ham-btn');
+  var drawer = document.getElementById('mob-drawer');
+  var overlay = document.getElementById('mob-overlay');
+  if(!btn || !drawer) return;
+  function openMenu(){ btn.classList.add('open'); drawer.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeMenu(){ btn.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow=''; }
+  btn.addEventListener('click', function(){ drawer.classList.contains('open') ? closeMenu() : openMenu(); });
+  overlay.addEventListener('click', closeMenu);
+  drawer.querySelectorAll('#mob-panel a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+}());
+</script>
 </body></html>
