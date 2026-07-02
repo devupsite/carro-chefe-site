@@ -1,6 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /obrigado
-Disallow: /404
+Disallow: /carro_chefe_obrigado.html
+Disallow: /404.html
+Disallow: /carro_chefe_404.html
+Disallow: /carro_chefe.html
 
-Sitemap: https://carrochefe.com.br/sitemap.xml
+Sitemap: https://espacocarrochefe.com.br/sitemap.xml

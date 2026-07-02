@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://carrochefe.com.br/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://carrochefe.com.br/casamentos</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://carrochefe.com.br/debutantes</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://carrochefe.com.br/aniversarios</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://carrochefe.com.br/eventos-corporativos</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://carrochefe.com.br/shows</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://carrochefe.com.br/workshops</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://carrochefe.com.br/galeria</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://carrochefe.com.br/contato</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://carrochefe.com.br/politica-de-privacidade</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://espacocarrochefe.com.br/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://espacocarrochefe.com.br/carro_chefe_casamentos.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://espacocarrochefe.com.br/carro_chefe_debutantes.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://espacocarrochefe.com.br/carro_chefe_aniversarios.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://espacocarrochefe.com.br/carro_chefe_eventos_corporativos.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://espacocarrochefe.com.br/carro_chefe_galeria.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://espacocarrochefe.com.br/carro_chefe_contato.html</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://espacocarrochefe.com.br/carro_chefe_politica_privacidade.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
