@@ -61,7 +61,7 @@ a{text-decoration:none;color:inherit}
 @media(max-width:768px){#lgpd-banner{flex-direction:column;align-items:flex-start;padding:20px 24px;gap:16px}.lgpd-actions{width:100%}.lgpd-accept,.lgpd-decline{flex:1;text-align:center}}
 </style>
 </head>
-<body onload="gtag_report_conversion();">
+<body>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXJX4RW8"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -158,19 +158,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   document.getElementById('lgpd-accept').addEventListener('click',function(){localStorage.setItem('cc_consent','accepted');b.classList.remove('visible');});
   document.getElementById('lgpd-decline').addEventListener('click',function(){localStorage.setItem('cc_consent','declined');b.classList.remove('visible');});
 }());
-</script>
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') { window.location = url; }
-  };
-  gtag('event', 'conversion', {
-    'send_to': 'AW-18290730524/LRhACPjD-8gcEJzM2ZFE',
-    'value': 1.0,
-    'currency': 'BRL',
-    'event_callback': callback
-  });
-  return false;
-}
 </script>
 </body></html>
