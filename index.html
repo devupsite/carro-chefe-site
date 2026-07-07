@@ -348,6 +348,45 @@ nav a.active::after {
   gap: 9px;
 }
 
+/* ── PROCESS (Como Funciona) ───────────────────────────────── */
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.process-step {
+  padding: 32px 24px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: border-color .3s ease;
+}
+.process-step:hover { border-color: var(--copper-d); }
+.process-num {
+  font-family: var(--dp);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--copper);
+  opacity: .35;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.process-title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.process-desc {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-m);
+  line-height: 1.75;
+}
+
 /* ── GALLERY ────────────────────────────────────────────────── */
 .gallery-header {
   display: flex;
@@ -481,6 +520,7 @@ nav a.active::after {
   #nav { gap: 28px; }
   .events-grid { grid-template-columns: repeat(2,1fr); gap: 40px 28px; }
   .space-grid { gap: 56px; }
+  .process-grid { grid-template-columns: repeat(3, 1fr); }
   .footer-grid { grid-template-columns: 1.6fr 1fr 1fr; }
   .footer-grid > div:last-child { grid-column: 1 / -1; }
 }
@@ -513,6 +553,10 @@ nav a.active::after {
   .space-grid { grid-template-columns: 1fr; gap: 44px; }
   .photo-grid { grid-template-rows: 200px 240px; }
   .hd { font-size: clamp(34px, 9vw, 52px); }
+
+  /* Como Funciona */
+  .process-grid { grid-template-columns: 1fr; gap: 2px; }
+  .process-step { text-align: left; padding: 24px 20px; }
 
   /* Galeria */
   .gallery-grid {
@@ -902,6 +946,43 @@ nav a.active::after {
 </section>
 
 
+<!-- ═══ COMO FUNCIONA ═══════════════════════════════════════════ -->
+<section id="processo" class="sec-pad" style="background: var(--bg)">
+  <div class="eyebrow" style="justify-content:center">
+    <svg class="gem" width="10" height="10" viewBox="0 0 12 12"><polygon points="6,1 11,6 6,11 1,6" fill="none" stroke="#C06830" stroke-width="1.15" stroke-linejoin="round"/></svg>
+    <span class="eyebrow-txt">COMO FUNCIONA</span>
+  </div>
+  <h2 class="hd" style="text-align:center; margin-bottom:56px">Do primeiro contato<br>ao grande dia.</h2>
+
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div class="process-title">Contato</div>
+      <p class="process-desc">Fale com a gente pelo WhatsApp ou formulário. Respondemos rápido.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div class="process-title">Visita</div>
+      <p class="process-desc">Conheça o espaço pessoalmente, sem compromisso, com nossa equipe.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div class="process-title">Proposta</div>
+      <p class="process-desc">Montamos uma proposta sob medida para o seu tipo de evento.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <div class="process-title">Contrato</div>
+      <p class="process-desc">Fechamos os detalhes e garantimos sua data com segurança.</p>
+    </div>
+    <div class="process-step">
+      <div class="process-num">05</div>
+      <div class="process-title">Evento</div>
+      <p class="process-desc">É hora de celebrar. Cuidamos de cada detalhe para você aproveitar.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ GALERIA ═════════════════════════════════════════════════ -->
 <section id="galeria" class="sec-pad" style="background: var(--bg)">
   <div class="eyebrow">
@@ -990,7 +1071,7 @@ nav a.active::after {
 (function () {
   const hdr      = document.getElementById('header');
   const navLinks = document.querySelectorAll('#nav a');
-  const sections = ['home','eventos','espaco','galeria','orcamento','contato'];
+  const sections = ['home','eventos','espaco','processo','galeria','contato'];
 
   // ── Scroll: header + active nav ──────────────────────────────
   function onScroll () {
