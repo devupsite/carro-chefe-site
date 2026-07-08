@@ -131,11 +131,9 @@ publicados na galeria geral com categorização e labels coerentes. As duas imag
 `venue-arco-vazio.jpg` e `venue-salao-festa.jpg` (antes flagadas como suspeitas) agora
 estão corretamente usadas sob `data-cat="espaco"`, não misturadas com álbuns de casal.
 
-**Único resíduo conhecido:** `show-amigos-risada.jpg` e `show-banda-ao-vivo.jpg` continuam
-órfãs (sem uso em nenhuma página) — provavelmente sobras da categoria "Shows & Festivais",
-que foi descontinuada como produto. Não é um erro a corrigir, é esperado — pode apagar os
-dois arquivos (jpg + webp) se quiser limpar a pasta `images/`, ou deixar como estão (não
-afetam nada).
+**Resíduo anterior, já limpo (08/07/2026):** `show-amigos-risada.jpg/.webp` e
+`show-banda-ao-vivo.jpg/.webp` foram removidos da pasta `images/` — eram sobras órfãs da
+categoria "Shows & Festivais", descontinuada como produto, sem uso em nenhuma página.
 
 ---
 
@@ -148,5 +146,4 @@ git config user.name "UP Co."
 
 ## Pendências gerais (não resolvidas)
 
-Nenhuma pendência de peso registrada no momento (08/07/2026). Ver nota acima sobre as
-2 imagens órfãs de "Shows/Banda" — resíduo esperado, não é bug.
+Nenhuma pendência registrada no momento (08/07/2026).
