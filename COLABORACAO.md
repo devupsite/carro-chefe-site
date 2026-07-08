@@ -125,13 +125,17 @@ O site usa `background-image` em CSS extensivamente (não `<img>`), então
 | Sabrina & Felipe | `sf-*.jpg` / `sf-*.webp` | Só em `carro_chefe_casamentos.html` — **ainda não está na galeria geral** |
 | Álbum 5 | `casamento5-*.jpg` / `.webp` | Só em `carro_chefe_casamentos.html` — **ainda não está na galeria geral** |
 
-⚠️ **Pendência conhecida, não resolvida ainda:** a galeria geral (`carro_chefe_galeria.html`)
-tem vários blocos com slots vazios ou imagens genéricas/erradas (ex: fotos de espaço vazio
-no lugar de fotos de casal, bolo da cor errada). Isso inclui os blocos de Halloween,
-Debutante, Robô LED, Shows/Banda e Espaço/Salão — todos com fotos disponíveis no repositório
-mas sem vínculo no HTML. **Não mexer nisso sem alinhamento explícito do cliente** — ele pediu
-para tratar isso depois, com atenção redobrada para não misturar fotos de eventos diferentes
-no mesmo bloco/álbum.
+⚠️ **Atualização 08/07/2026 (mesmo dia, sessão posterior):** essa reorganização já foi
+feita por outra sessão. Sabrina & Felipe, Álbum 5, Halloween, Debutante e Buffet estão
+publicados na galeria geral com categorização e labels coerentes. As duas imagens
+`venue-arco-vazio.jpg` e `venue-salao-festa.jpg` (antes flagadas como suspeitas) agora
+estão corretamente usadas sob `data-cat="espaco"`, não misturadas com álbuns de casal.
+
+**Único resíduo conhecido:** `show-amigos-risada.jpg` e `show-banda-ao-vivo.jpg` continuam
+órfãs (sem uso em nenhuma página) — provavelmente sobras da categoria "Shows & Festivais",
+que foi descontinuada como produto. Não é um erro a corrigir, é esperado — pode apagar os
+dois arquivos (jpg + webp) se quiser limpar a pasta `images/`, ou deixar como estão (não
+afetam nada).
 
 ---
 
@@ -144,4 +148,5 @@ git config user.name "UP Co."
 
 ## Pendências gerais (não resolvidas)
 
-- [ ] Reorganização completa dos blocos da galeria por evento (ver seção acima)
+Nenhuma pendência de peso registrada no momento (08/07/2026). Ver nota acima sobre as
+2 imagens órfãs de "Shows/Banda" — resíduo esperado, não é bug.
