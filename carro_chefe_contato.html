@@ -79,16 +79,17 @@ a{text-decoration:none;color:inherit}
 @media(max-width:1024px){.contact-wrap{grid-template-columns:1fr}.contact-info{padding:60px 40px}.contact-form-col{padding:60px 40px}}
 @media(max-width:768px){.contact-info{padding:52px 24px}.contact-form-col{padding:52px 24px}.map-box{height:140px}}
 
-#lgpd-banner{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(12,10,7,.97);border-top:1px solid #201A14;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;gap:32px;backdrop-filter:blur(16px);transform:translateY(100%);transition:transform .4s ease}
-#lgpd-banner.visible{transform:translateY(0)}
-.lgpd-text{font-size:11px;font-weight:400;color:var(--tx-m);line-height:1.7;max-width:680px}
-.lgpd-text a{color:#C06830}
-.lgpd-actions{display:flex;gap:12px;flex-shrink:0}
-.lgpd-accept{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#0C0A07;background:#C06830;border:none;padding:10px 20px;cursor:pointer;transition:background .2s;white-space:nowrap}
+.lgpd-icon{width:34px;height:34px;border-radius:50%;background:rgba(192,104,48,.14);display:flex;align-items:center;justify-content:center;color:#C06830;margin-bottom:14px}
+#lgpd-banner{position:fixed;left:20px;bottom:20px;z-index:999;width:320px;max-width:calc(100vw - 40px);background:rgba(17,16,9,.97);border:1px solid #201A14;border-radius:14px;padding:22px;box-shadow:0 16px 44px rgba(0,0,0,.5);backdrop-filter:blur(16px);opacity:0;transform:translateY(14px) scale(.97);pointer-events:none;transition:opacity .4s ease,transform .4s ease}
+#lgpd-banner.visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.lgpd-text{font-size:11.5px;font-weight:400;color:var(--tx-m);line-height:1.7;margin-bottom:18px}
+.lgpd-text a{color:#C06830;border-bottom:1px solid rgba(192,104,48,.3)}
+.lgpd-actions{display:flex;flex-direction:column;gap:8px}
+.lgpd-accept{width:100%;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#0C0A07;background:#C06830;border:none;padding:12px;cursor:pointer;transition:background .2s}
 .lgpd-accept:hover{background:#D27A40}
-.lgpd-decline{font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-m);background:transparent;border:1px solid #201A14;padding:10px 16px;cursor:pointer;transition:color .2s,border-color .2s;white-space:nowrap}
+.lgpd-decline{width:100%;font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-m);background:transparent;border:1px solid #201A14;padding:11px;cursor:pointer;transition:color .2s,border-color .2s}
 .lgpd-decline:hover{color:#EDE8DC;border-color:#3C3630}
-@media(max-width:768px){#lgpd-banner{flex-direction:column;align-items:flex-start;padding:20px 24px;gap:16px}.lgpd-actions{width:100%}.lgpd-accept,.lgpd-decline{flex:1;text-align:center}}
+@media(max-width:768px){#lgpd-banner{left:14px;right:14px;bottom:100px;width:auto;max-width:none}}
 
 
 /* ── HAMBURGER MOBILE ─────────────────────────────────────────── */
@@ -366,10 +367,13 @@ a{text-decoration:none;color:inherit}
 </script>
 
 <div id="lgpd-banner" role="dialog" aria-label="Preferências de cookies">
+  <div class="lgpd-icon">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5z"/><circle cx="8.5" cy="10.5" r=".6" fill="currentColor" stroke="none"/><circle cx="12.5" cy="15.5" r=".6" fill="currentColor" stroke="none"/><circle cx="16" cy="10" r=".6" fill="currentColor" stroke="none"/></svg>
+  </div>
   <p class="lgpd-text">Utilizamos cookies essenciais e de análise para melhorar sua experiência. Ao continuar, você concorda com nossa <a href="carro_chefe_politica_privacidade.html">Política de Privacidade</a> conforme a LGPD.</p>
   <div class="lgpd-actions">
-    <button class="lgpd-decline" id="lgpd-decline">Apenas essenciais</button>
     <button class="lgpd-accept" id="lgpd-accept">Aceitar e continuar</button>
+    <button class="lgpd-decline" id="lgpd-decline">Apenas essenciais</button>
   </div>
 </div>
 <script>
