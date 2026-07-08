@@ -507,7 +507,7 @@ img{display:block;max-width:100%}
 
 <!-- HERO: intenção → forma → prova. Tudo above the fold. -->
 <section id="hero">
-  <div class="hero-bg" style="background-image:url('images/aniversario-festa-bolo.jpg');background-size:cover;background-position:center 30%"></div>
+  <div class="hero-bg lazy-bg" data-bg="images/aniversario-festa-bolo.webp" style="background-size:cover;background-position:center 30%"></div>
   <div class="hero-ov"></div>
   <div class="hero-glow" style="width:480px;height:480px;right:20%;top:15%"></div>
   <div class="hero-dmd" style="width:640px;height:640px"></div>
@@ -587,18 +587,18 @@ img{display:block;max-width:100%}
   <div class="album">
     <div class="album-meta"><span class="album-couple">Aniversário — 2026</span><span class="album-div">—</span><span class="album-date">2026</span></div>
     <div class="album-grid ag-6">
-      <div class="ag-img ag-tall" style="background-image:url('images/aniversario-festa-bolo.jpg');background-position:center 30%"></div>
-      <div class="ag-img" style="background-image:url('images/festa-frozen-aniversariante.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/festa-frozen-decoracao.jpg');background-position:center"></div>
-      <div class="ag-img" style="background-image:url('images/festa-frozen-mae-filha.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/halloween-grupo-fantasias.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/halloween-trio-fantasias.jpg');background-position:center top"></div>
+      <div class="ag-img ag-tall lazy-bg" data-bg="images/aniversario-festa-bolo.webp" style="background-position:center 30%"></div>
+      <div class="ag-img lazy-bg" data-bg="images/festa-frozen-aniversariante.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/festa-frozen-decoracao.webp" style="background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/festa-frozen-mae-filha.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/halloween-grupo-fantasias.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/halloween-trio-fantasias.webp" style="background-position:center top"></div>
     </div>
     <div class="album-grid ag-4" style="margin-top:6px">
-      <div class="ag-img" style="background-image:url('images/halloween-decoracao-cemiterio.jpg');background-position:center"></div>
-      <div class="ag-img" style="background-image:url('images/halloween-pista-decorada.jpg');background-position:center"></div>
-      <div class="ag-img" style="background-image:url('images/festa-pista-luzes-glow.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/festa-publico-bar.jpg');background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/halloween-decoracao-cemiterio.webp" style="background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/halloween-pista-decorada.webp" style="background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/festa-pista-luzes-glow.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/festa-publico-bar.webp" style="background-position:center"></div>
     </div>
   </div>
 </section>
@@ -915,5 +915,6 @@ img{display:block;max-width:100%}
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
 }());
 </script>
+<script src="js/lazy-bg.js" defer></script>
 </body>
 </html>

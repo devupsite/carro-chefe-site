@@ -507,7 +507,7 @@ img{display:block;max-width:100%}
 
 <!-- HERO: intenção → forma → prova. Tudo above the fold. -->
 <section id="hero">
-  <div class="hero-bg" style="background-image:url('images/venue-salao-festa.jpg');background-size:cover;background-position:center 35%"></div>
+  <div class="hero-bg lazy-bg" data-bg="images/venue-salao-festa.webp" style="background-size:cover;background-position:center 35%"></div>
   <div class="hero-ov"></div>
   <div class="hero-glow" style="width:480px;height:480px;right:20%;top:15%"></div>
   <div class="hero-dmd" style="width:640px;height:640px"></div>
@@ -587,18 +587,18 @@ img{display:block;max-width:100%}
   <div class="album">
     <div class="album-meta"><span class="album-couple">O Espaço</span><span class="album-div">—</span><span class="album-date">Estrutura & Ambiente</span></div>
     <div class="album-grid ag-6">
-      <div class="ag-img ag-tall" style="background-image:url('images/venue-salao-festa.jpg');background-position:center 35%"></div>
-      <div class="ag-img" style="background-image:url('images/salao-vazio-frente.jpg');background-position:center"></div>
-      <div class="ag-img" style="background-image:url('images/salao-vazio-lateral.jpg');background-position:center"></div>
-      <div class="ag-img" style="background-image:url('images/venue-arco-vazio.jpg');background-position:center 40%"></div>
-      <div class="ag-img" style="background-image:url('images/buffet-carnes-grelhados.jpg');background-position:center"></div>
-      <div class="ag-img" style="background-image:url('images/buffet-mesa-frutas-saladas.jpg');background-position:center"></div>
+      <div class="ag-img ag-tall lazy-bg" data-bg="images/venue-salao-festa.webp" style="background-position:center 35%"></div>
+      <div class="ag-img lazy-bg" data-bg="images/salao-vazio-frente.webp" style="background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/salao-vazio-lateral.webp" style="background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/venue-arco-vazio.webp" style="background-position:center 40%"></div>
+      <div class="ag-img lazy-bg" data-bg="images/buffet-carnes-grelhados.webp" style="background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/buffet-mesa-frutas-saladas.webp" style="background-position:center"></div>
     </div>
     <div class="album-grid ag-4" style="margin-top:6px">
-      <div class="ag-img" style="background-image:url('images/banda-ao-vivo-palco.jpg');background-position:center 35%"></div>
-      <div class="ag-img" style="background-image:url('images/festa-publico-bar.jpg');background-position:center"></div>
-      <div class="ag-img" style="background-image:url('images/salao-mesas-cadeiras.jpg');background-position:center 40%"></div>
-      <div class="ag-img" style="background-image:url('images/area-externa-terraco.jpg');background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/banda-ao-vivo-palco.webp" style="background-position:center 35%"></div>
+      <div class="ag-img lazy-bg" data-bg="images/festa-publico-bar.webp" style="background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/salao-mesas-cadeiras.webp" style="background-position:center 40%"></div>
+      <div class="ag-img lazy-bg" data-bg="images/area-externa-terraco.webp" style="background-position:center top"></div>
     </div>
   </div>
 </section>
@@ -915,5 +915,6 @@ img{display:block;max-width:100%}
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
 }());
 </script>
+<script src="js/lazy-bg.js" defer></script>
 </body>
 </html>

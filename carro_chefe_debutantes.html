@@ -507,7 +507,7 @@ img{display:block;max-width:100%}
 
 <!-- HERO: intenção → forma → prova. Tudo above the fold. -->
 <section id="hero">
-  <div class="hero-bg" style="background-image:url('images/debutante-quinze-anos.jpg');background-size:cover;background-position:center 8%"></div>
+  <div class="hero-bg lazy-bg" data-bg="images/debutante-quinze-anos.webp" style="background-size:cover;background-position:center 8%"></div>
   <div class="hero-ov"></div>
   <div class="hero-glow" style="width:480px;height:480px;right:20%;top:15%"></div>
   <div class="hero-dmd" style="width:640px;height:640px"></div>
@@ -587,18 +587,18 @@ img{display:block;max-width:100%}
   <div class="album">
     <div class="album-meta"><span class="album-couple">Debutante — 2026</span><span class="album-div">—</span><span class="album-date">Junho de 2026</span></div>
     <div class="album-grid ag-6">
-      <div class="ag-img ag-tall" style="background-image:url('images/debutante-quinze-anos.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/debutante-valsa-pai.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/debutante-15-anos-bolo.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/debutante-valsa-convidado.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/debutante-momento-pais.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/debutante-momento-familia.jpg');background-position:center top"></div>
+      <div class="ag-img ag-tall lazy-bg" data-bg="images/debutante-quinze-anos.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/debutante-valsa-pai.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/debutante-15-anos-bolo.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/debutante-valsa-convidado.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/debutante-momento-pais.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/debutante-momento-familia.webp" style="background-position:center top"></div>
     </div>
     <div class="album-grid ag-4" style="margin-top:6px">
-      <div class="ag-img" style="background-image:url('images/decoracao-15-anos-logo.jpg');background-position:center"></div>
-      <div class="ag-img" style="background-image:url('images/debutante-decoracao-15.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/debutante-valsa-par.jpg');background-position:center top"></div>
-      <div class="ag-img" style="background-image:url('images/robot-led-rosa-aniversariante.jpg');background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/decoracao-15-anos-logo.webp" style="background-position:center"></div>
+      <div class="ag-img lazy-bg" data-bg="images/debutante-decoracao-15.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/debutante-valsa-par.webp" style="background-position:center top"></div>
+      <div class="ag-img lazy-bg" data-bg="images/robot-led-rosa-aniversariante.webp" style="background-position:center top"></div>
     </div>
   </div>
 </section>
@@ -915,5 +915,6 @@ img{display:block;max-width:100%}
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
 }());
 </script>
+<script src="js/lazy-bg.js" defer></script>
 </body>
 </html>
