@@ -18,7 +18,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:#0C0A07;color:#EDE8DC;font-family:'Montserrat',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
-:root{--bg:#0C0A07;--surf:#111009;--foot:#070604;--cu:#C06830;--cu-l:#D27A40;--cu-d:#5C3218;--tx:#EDE8DC;--tx-m:#887C70;--tx-l:#3C3630;--bd:#201A14}
+@view-transition{navigation:auto}
+:root{--bg:#0C0A07;--surf:#111009;--foot:#070604;--cu:#C06830;--cu-l:#D27A40;--cu-d:#5C3218;--tx:#EDE8DC;--tx-m:#A69C90;--tx-l:#3C3630;--bd:#201A14}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--cu-d)}
 .logo-anchor{display:inline-flex;align-items:center;flex-shrink:0}
 .site-logo{height:44px;width:auto;display:block}
@@ -31,7 +32,7 @@ a{text-decoration:none;color:inherit}
 .hdr-back:hover{color:var(--cu)}
 @media(max-width:768px){#hdr{padding:0 20px;height:60px}.site-logo{height:36px !important}}
 #foot{background:var(--foot);border-top:1px solid var(--bd);padding:28px 60px;display:flex;justify-content:space-between;align-items:center}
-.foot-copy{font-size:10px;color:var(--tx-l);letter-spacing:.1em}
+.foot-copy{font-size:10px;color:var(--tx-m);letter-spacing:.1em}
 @media(max-width:768px){#foot{flex-direction:column;gap:14px;padding:24px;text-align:center}}
 #p404{min-height:calc(100vh - 68px - 67px);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 50%,#140E06 0%,#0C0A04 60%,#080604 100%)}
 .p404-dmd{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(45deg);border:1px solid rgba(192,104,48,.06);pointer-events:none}
@@ -98,7 +99,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ── BOTÃO VOLTAR AO TOPO ── -->
 <button id="back-top" aria-label="Voltar ao topo">
-  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><polyline points="18 15 12 9 6 15"/></svg>
+  <svg class="bt-ring" viewBox="0 0 44 44" width="44" height="44">
+    <circle cx="22" cy="22" r="19" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="2.5"/>
+    <circle class="bt-ring-fill" cx="22" cy="22" r="19" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" transform="rotate(-90 22 22)"/>
+  </svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
 <style>
@@ -111,14 +116,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 #back-top{position:fixed;bottom:90px;right:24px;width:44px;height:44px;border-radius:50%;background:rgba(192,104,48,.88);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.25);z-index:8000;opacity:0;visibility:hidden;transition:opacity .3s,transform .2s,visibility .3s}
 #back-top.visible{opacity:1;visibility:visible}
 #back-top:hover{transform:translateY(-3px)}
+#back-top .bt-ring{position:absolute;inset:0;pointer-events:none}
+#back-top .bt-ring-fill{transition:stroke-dashoffset .1s linear}
 </style>
 
 <script>
 (function(){
   var btn = document.getElementById('back-top');
-  window.addEventListener('scroll', function(){
+  var ring = btn.querySelector('.bt-ring-fill');
+  var CIRC = 119.4;
+  function onScroll(){
     btn.classList.toggle('visible', window.scrollY > 300);
-  }, {passive:true});
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    ring.style.strokeDashoffset = CIRC - (CIRC * pct);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
   btn.addEventListener('click', function(){
     window.scrollTo({top:0, behavior:'smooth'});
   });

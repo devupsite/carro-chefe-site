@@ -5,7 +5,18 @@
 > Se você (outra sessão) fizer mudanças, **atualize este arquivo antes do commit final**
 > — não deixe para a próxima sessão descobrir sozinha.
 
-**Última atualização:** 08/07/2026 — sessão de otimização de imagens (WebP + lazy loading)
+**Última atualização:** 08/07/2026 — sessão de otimização de imagens (WebP + lazy loading) + merge com sessão de polimento visual/acessibilidade
+
+### Mudanças recentes de outra sessão (já mescladas, cientes)
+
+- `carro_chefe.html` foi **removido** — era um snapshot órfão do `index.html`, sem links
+  apontando para ele, fora do sitemap, e já bloqueado no `robots.txt` (`Disallow: /carro_chefe.html`
+  — regra mantida mesmo com o arquivo já não existindo, sem problema).
+- Correções de contraste WCAG AA em todas as páginas (troca de variável de cor de texto)
+- Barra LGPD do rodapé virou card flutuante compacto + botão "cookie fofinho" persistente
+- Botão voltar-ao-topo com anel de progresso de scroll
+- Cursor customizado "Ver" na galeria (desktop)
+- Seção "Como Funciona" adicionada entre O Espaço e Galeria
 
 ---
 
