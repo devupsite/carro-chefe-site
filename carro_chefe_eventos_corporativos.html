@@ -345,6 +345,27 @@ img{display:block;max-width:100%}
   transition: opacity .4s ease, transform .4s ease;
 }
 #lgpd-banner.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+#lgpd-fab {
+  position: fixed;
+  left: 20px; bottom: 20px;
+  z-index: 998;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: rgba(17,16,9,.92);
+  border: 1px solid #201A14;
+  color: #C06830;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,.4);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: scale(.85);
+  pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease, border-color .2s;
+}
+#lgpd-fab.visible { opacity: 1; transform: scale(1); pointer-events: auto; }
+#lgpd-fab:hover { border-color: #C06830; }
+@media (max-width: 768px) { #lgpd-fab { left: 14px; bottom: 14px; } }
 .lgpd-icon {
   width: 34px; height: 34px;
   border-radius: 50%;
@@ -913,13 +934,21 @@ img{display:block;max-width:100%}
     <button class="lgpd-decline" id="lgpd-decline">Apenas essenciais</button>
   </div>
 </div>
+<button id="lgpd-fab" aria-label="Preferências de cookies">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5z"/><circle cx="8.5" cy="10.5" r=".7" fill="currentColor" stroke="none"/><circle cx="12.5" cy="15.5" r=".7" fill="currentColor" stroke="none"/><circle cx="16" cy="10" r=".7" fill="currentColor" stroke="none"/></svg>
+</button>
 <script>
 (function(){
   var b=document.getElementById('lgpd-banner');
+  var fab=document.getElementById('lgpd-fab');
   if(!b)return;
-  if(!localStorage.getItem('cc_consent')){setTimeout(function(){b.classList.add('visible');},1200);}
-  document.getElementById('lgpd-accept').addEventListener('click',function(){localStorage.setItem('cc_consent','accepted');b.classList.remove('visible');});
-  document.getElementById('lgpd-decline').addEventListener('click',function(){localStorage.setItem('cc_consent','declined');b.classList.remove('visible');});
+  function openBanner(){b.classList.add('visible');if(fab)fab.classList.remove('visible');}
+  function closeBanner(){b.classList.remove('visible');if(fab)fab.classList.add('visible');}
+  if(!localStorage.getItem('cc_consent')){setTimeout(openBanner,1200);}
+  else if(fab){fab.classList.add('visible');}
+  document.getElementById('lgpd-accept').addEventListener('click',function(){localStorage.setItem('cc_consent','accepted');closeBanner();});
+  document.getElementById('lgpd-decline').addEventListener('click',function(){localStorage.setItem('cc_consent','declined');closeBanner();});
+  if(fab)fab.addEventListener('click',openBanner);
 }());
 </script>
 <div id="mob-drawer">
